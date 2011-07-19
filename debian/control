@@ -1,0 +1,16 @@
+Source: prep-kernel
+Section: utils
+Priority: optional
+Maintainer: Matt Sealey <matt@genesi-usa.com>
+Uploaders: Matt Sealey <matt@genesi-usa.com>
+Build-Depends: debhelper (>= 7.3.10)
+Standards-Version: 3.7.2
+
+Package: prep-kernel
+Architecture: arm armel armeb
+Provides: prep-kernel,flash-kernel
+Conflicts: prep-kernel,flash-kernel
+Replaces: prep-kernel,flash-kernel
+Depends: initramfs-tools (>= 0.92bubuntu28), uboot-mkimage | u-boot-tools
+Suggests: uboot-envtools
+Description: Prepare kernels and ramdisks for loading on Efika MX
