@@ -1,2 +1,2 @@
 #!/bin/sh
-rm -rf /etc/kernel/postinst.d/xflash-kernel
+rm -f /etc/kernel/postinst.d/xflash-kernel*
