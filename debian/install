@@ -1,3 +1,4 @@
 usr/sbin/*
 boot/*
 etc/kernel/postinst.d/*
+etc/kernel/postrm.d/*

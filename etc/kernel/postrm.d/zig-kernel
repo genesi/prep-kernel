@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+#
+# prep-kernel companion script
+#  removes kernel uImage and uInitrd (and .bak) when kernels are removed, but
+#  only if the kernel vmlinuz and initrd.img have ACTUALLY been removed..
+#
+
+set -e
+
+kver=${1}
+BOOTDIR="/boot/"
+
+error()
+{
+	echo "E: ${1}" >/dev/stderr; exit 1
+}
+
+warning()
+{
+	echo "W: ${1}" >/dev/stderr
+}
+
+[ -z "${kver}" ] && error "prep-kernel: kernel version is required"
+
+remove_kernel_file
+{
+	ftr=${1}
+	if [ -f "${ftr}"]; then
+		rm -f "${ftr}"
+	fi
+}
+
+if [ -f "${BOOTDIR}vmlinuz-${kver}" ]; then
+	warning "Not removing uImage-${kver} since original kernel still exists"
+else
+	remove_kernel_file "${BOOTDIR}uImage-${kver}"
+	remove_kernel_file "${BOOTDIR}uImage-${kver}.bak"
+fi
+if [ ! -f "${BOOTDIR}initrd.img-${kver}" ]; then
+	warning "Not removing uInitrd-${kver} since original ramdisk still exists"
+else
+	remove_kernel_file "${BOOTDIR}uInitrd-${kver}"
+	remove_kernel_file "${BOOTDIR}uInitrd-${kver}.bak"
+fi
