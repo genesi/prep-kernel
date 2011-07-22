@@ -23,10 +23,10 @@ warning()
 
 [ -z "${kver}" ] && error "prep-kernel: kernel version is required"
 
-remove_kernel_file
+remove_kernel_file()
 {
 	ftr=${1}
-	if [ -f "${ftr}"]; then
+	if [ -f "${ftr}" ]; then
 		rm -f "${ftr}"
 	fi
 }
@@ -37,7 +37,7 @@ else
 	remove_kernel_file "${BOOTDIR}uImage-${kver}"
 	remove_kernel_file "${BOOTDIR}uImage-${kver}.bak"
 fi
-if [ ! -f "${BOOTDIR}initrd.img-${kver}" ]; then
+if [ -f "${BOOTDIR}initrd.img-${kver}" ]; then
 	warning "Not removing uInitrd-${kver} since original ramdisk still exists"
 else
 	remove_kernel_file "${BOOTDIR}uInitrd-${kver}"
