@@ -128,11 +128,11 @@ desc="Kernel $1"
 idesc="Ramdisk $1"
 
 if [ ! -e $kfile ]; then
-	error "Can't find $kfile and $ifile"
+	error "Can't find $kfile"
 fi
 
 if [ ! -e $ifile ]; then
-	echo "Warning: Can't find $ifile. Will generate ramdisk less boot." >&2
+	echo "Warning: Can't find $ifile . Will generate ramdisk less boot." >&2
 fi
 
 # Extract the subarchitecture from the kernel name
