@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 7.3.10)
 Standards-Version: 3.7.2
 
 Package: prep-kernel
-Architecture: arm armel armeb
+Architecture: arm armel armeb armhf
 Provides: prep-kernel,flash-kernel
 Conflicts: prep-kernel,flash-kernel
 Replaces: prep-kernel,flash-kernel
