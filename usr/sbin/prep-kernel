@@ -130,8 +130,6 @@ idesc="Ramdisk $1"
 if [ ! -e $kfile ] || [ ! -e $ifile ]; then
 	error "Can't find $kfile and $ifile"
 fi
-kfilesize=$(wc -c "$kfile" | awk '{print $1}')
-ifilesize=$(wc -c "$ifile" | awk '{print $1}')
 
 # Extract the subarchitecture from the kernel name
 if [ -L "$kfile" ]; then
