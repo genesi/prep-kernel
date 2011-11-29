@@ -127,11 +127,13 @@ ifile=/boot/initrd.img-$kvers
 desc="Kernel $1"
 idesc="Ramdisk $1"
 
-if [ ! -e $kfile ] || [ ! -e $ifile ]; then
-	error "Can't find $kfile and $ifile"
+if [ ! -e $kfile ]; then
+	error "Can't find $kfile"
 fi
-kfilesize=$(wc -c "$kfile" | awk '{print $1}')
-ifilesize=$(wc -c "$ifile" | awk '{print $1}')
+
+if [ ! -e $ifile ]; then
+	echo "Warning: Can't find $ifile . Will generate ramdisk less boot." >&2
+fi
 
 # Extract the subarchitecture from the kernel name
 if [ -L "$kfile" ]; then
