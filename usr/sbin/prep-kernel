@@ -51,6 +51,10 @@ efikamx_prep_kernel() {
 	bstmp=$tmp.boot.script
 	bsdst=/boot/boot.scr
 	loadaddr=0x90008000
+
+	if [ ! -e "/dev/root" ]; then
+		error "Could not find root device. Please add a symlink from your root device to /dev/root ."
+	fi
 	rootfs=$(readlink -f /dev/root)
 
 	printf "Generating kernel u-boot image... " >&2
