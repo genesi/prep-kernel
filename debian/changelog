@@ -1,3 +1,11 @@
+prep-kernel (2.1.0-20130320) maverick; urgency=low
+
+  * fix lack of /dev/root on some systems by using a custom tool (wschaub)
+  * add update-initramfs hook (wschaub)
+  * modify package architecture to 'all'
+
+ -- Matt Sealey <matt@genesi-usa.com>  Wed, 20 Mar 2013 10:54:21 -0600
+
 prep-kernel (2.0.0-20110719) maverick; urgency=low
 
   * Strip and rename flash-kernel so we don't have to deal with package pinning
