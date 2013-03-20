@@ -59,7 +59,7 @@ efikamx_prep_kernel() {
 		exit 1
 	fi
 
-	printf "Generating kernel u-boot image... " >&2
+	printf "Generating u-boot kernel image... " >&2
 	mkimage -A arm -O linux -T kernel -C none -a ${loadaddr} \
 		-e ${loadaddr} -n "${kdesc}" -d "${kfile}" "$tmp.uImage" >&2 1>/dev/null
 	echo "done." >&2
@@ -73,7 +73,7 @@ efikamx_prep_kernel() {
 
 	# if there's an initrd.img to generate, do it, if not, ignore..
 	if [ -e "${ifile}" ]; then
-		printf "Generating initrd u-boot image... " >&2
+		printf "Generating u-boot initrd image... " >&2
 		mkimage -A arm -O linux -T ramdisk -C none -a 0x0 \
 			-e 0x0 -n "${idesc}" -d "${ifile}" "$tmp.uInitrd" >&2 1>/dev/null
 		echo "done." >&2
