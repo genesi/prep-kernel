@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+version="${1}"
+
+if prep-kernel --supported >/dev/null 2>&1; then
+	prep-kernel ${version}
+	return 0
+fi
+	
